@@ -31,7 +31,7 @@ class Options extends React.Component {
   }
 
   buildOptionText = (value) => {
-    return `${value} ${this.props.locale.items_per_page}`;
+    return `${this.props.locale.view} ${value}`;
   }
 
   changeSize = (value) => {

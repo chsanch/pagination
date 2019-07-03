@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Pager from './Pager';
 import Options from './Options';
 import KEYCODE from './KeyCode';
-import LOCALE from './locale/zh_CN';
+import LOCALE from './locale/en_US';
 import { polyfill } from 'react-lifecycles-compat';
 
 function noop() {
@@ -619,6 +619,19 @@ class Pagination extends React.Component {
         {...dataOrAriaAttributeProps}
       >
         {totalText}
+        <Options
+          disabled={disabled}
+          locale={props.locale}
+          rootPrefixCls={prefixCls}
+          selectComponentClass={props.selectComponentClass}
+          selectPrefixCls={props.selectPrefixCls}
+          changeSize={this.props.showSizeChanger ? this.changePageSize : null}
+          current={this.state.current}
+          pageSize={this.state.pageSize}
+          pageSizeOptions={this.props.pageSizeOptions}
+          quickGo={this.shouldDisplayQuickJumper() ? this.handleChange : null}
+          goButton={goButton}
+        />
         <li
           title={props.showTitle ? locale.prev_page : null}
           onClick={this.prev}
@@ -648,19 +661,6 @@ class Pagination extends React.Component {
             this.getItemIcon(props.nextIcon)
           )}
         </li>
-        <Options
-          disabled={disabled}
-          locale={props.locale}
-          rootPrefixCls={prefixCls}
-          selectComponentClass={props.selectComponentClass}
-          selectPrefixCls={props.selectPrefixCls}
-          changeSize={this.props.showSizeChanger ? this.changePageSize : null}
-          current={this.state.current}
-          pageSize={this.state.pageSize}
-          pageSizeOptions={this.props.pageSizeOptions}
-          quickGo={this.shouldDisplayQuickJumper() ? this.handleChange : null}
-          goButton={goButton}
-        />
       </ul>
     );
   }
