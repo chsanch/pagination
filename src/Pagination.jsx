@@ -595,7 +595,7 @@ class Pagination extends React.Component {
 
     if (props.showTotal) {
       totalText = (
-        <li className={`${prefixCls}-total-text`}>
+        <div className={`${prefixCls}-total-text`}>
           {props.showTotal(
             props.total,
             [
@@ -603,22 +603,14 @@ class Pagination extends React.Component {
               current * pageSize > props.total ? props.total : current * pageSize,
             ]
           )}
-        </li>
+        </div>
       );
     }
     const prevDisabled = !this.hasPrev() || !allPages;
     const nextDisabled = !this.hasNext() || !allPages;
     return (
-      <ul
-        className={classNames(prefixCls, className, {
-          [`${prefixCls}-disabled`]: disabled,
-        })}
-        style={props.style}
-        unselectable="unselectable"
-        ref={this.savePaginationNode}
-        {...dataOrAriaAttributeProps}
-      >
-        {totalText}
+	<React.Fragment>
+      {totalText}
         <Options
           disabled={disabled}
           locale={props.locale}
@@ -632,6 +624,15 @@ class Pagination extends React.Component {
           quickGo={this.shouldDisplayQuickJumper() ? this.handleChange : null}
           goButton={goButton}
         />
+      <ul
+        className={classNames(prefixCls, className, {
+          [`${prefixCls}-disabled`]: disabled,
+        })}
+        style={props.style}
+        unselectable="unselectable"
+        ref={this.savePaginationNode}
+        {...dataOrAriaAttributeProps}
+      >
         <li
           title={props.showTitle ? locale.prev_page : null}
           onClick={this.prev}
@@ -662,6 +663,7 @@ class Pagination extends React.Component {
           )}
         </li>
       </ul>
+	</React.Fragment>
     );
   }
 }

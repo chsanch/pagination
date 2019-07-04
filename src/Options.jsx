@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import KEYCODE from './KeyCode';
+import classNames from 'classnames';
 
 class Options extends React.Component {
   static propTypes = {
@@ -136,10 +137,10 @@ class Options extends React.Component {
     }
 
     return (
-      <li className={`${prefixCls}`}>
-        {changeSelect}
-        {goInput}
-      </li>
+		<div className={classNames(rootPrefixCls, `${prefixCls}-quick-jumper`)}>
+			{changeSelect}
+			{goInput}
+		</div>
     );
   }
 }
