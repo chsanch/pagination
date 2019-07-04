@@ -4,7 +4,7 @@ export default {
   jump_to: 'Goto',
   jump_to_confirm: 'confirm',
   page: '',
-  view: 'View'
+  view: 'View',
 
   // Pagination.jsx
   prev_page: 'Previous Page',
